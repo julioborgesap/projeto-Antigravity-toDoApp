@@ -3,8 +3,12 @@ from typing import Optional
 import jwt
 import bcrypt
 
-# In a real app, load this from .env
-SECRET_KEY = "super-secret-todo-key-please-change"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key-do-not-use-in-prod")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7 # 7 days
 
